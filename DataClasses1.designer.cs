@@ -36,6 +36,9 @@ namespace GasUp_Service
     partial void InsertCustomer(Customer instance);
     partial void UpdateCustomer(Customer instance);
     partial void DeleteCustomer(Customer instance);
+    partial void InsertAdmin(Admin instance);
+    partial void UpdateAdmin(Admin instance);
+    partial void DeleteAdmin(Admin instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -81,6 +84,14 @@ namespace GasUp_Service
 			get
 			{
 				return this.GetTable<Customer>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Admin> Admins
+		{
+			get
+			{
+				return this.GetTable<Admin>();
 			}
 		}
 	}
@@ -520,6 +531,116 @@ namespace GasUp_Service
 					this._Customer_PostalCode = value;
 					this.SendPropertyChanged("Customer_PostalCode");
 					this.OnCustomer_PostalCodeChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Admin")]
+	public partial class Admin : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Admin_ID;
+		
+		private string _Admin_Name;
+		
+		private string _Admin_Surname;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnAdmin_IDChanging(int value);
+    partial void OnAdmin_IDChanged();
+    partial void OnAdmin_NameChanging(string value);
+    partial void OnAdmin_NameChanged();
+    partial void OnAdmin_SurnameChanging(string value);
+    partial void OnAdmin_SurnameChanged();
+    #endregion
+		
+		public Admin()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Admin_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Admin_ID
+		{
+			get
+			{
+				return this._Admin_ID;
+			}
+			set
+			{
+				if ((this._Admin_ID != value))
+				{
+					this.OnAdmin_IDChanging(value);
+					this.SendPropertyChanging();
+					this._Admin_ID = value;
+					this.SendPropertyChanged("Admin_ID");
+					this.OnAdmin_IDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Admin_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Admin_Name
+		{
+			get
+			{
+				return this._Admin_Name;
+			}
+			set
+			{
+				if ((this._Admin_Name != value))
+				{
+					this.OnAdmin_NameChanging(value);
+					this.SendPropertyChanging();
+					this._Admin_Name = value;
+					this.SendPropertyChanged("Admin_Name");
+					this.OnAdmin_NameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Admin_Surname", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string Admin_Surname
+		{
+			get
+			{
+				return this._Admin_Surname;
+			}
+			set
+			{
+				if ((this._Admin_Surname != value))
+				{
+					this.OnAdmin_SurnameChanging(value);
+					this.SendPropertyChanging();
+					this._Admin_Surname = value;
+					this.SendPropertyChanged("Admin_Surname");
+					this.OnAdmin_SurnameChanged();
 				}
 			}
 		}
