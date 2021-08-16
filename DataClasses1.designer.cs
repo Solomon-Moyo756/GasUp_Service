@@ -33,6 +33,9 @@ namespace GasUp_Service
     partial void InsertProduct(Product instance);
     partial void UpdateProduct(Product instance);
     partial void DeleteProduct(Product instance);
+    partial void InsertCustomer(Customer instance);
+    partial void UpdateCustomer(Customer instance);
+    partial void DeleteCustomer(Customer instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -70,6 +73,14 @@ namespace GasUp_Service
 			get
 			{
 				return this.GetTable<Product>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Customer> Customers
+		{
+			get
+			{
+				return this.GetTable<Customer>();
 			}
 		}
 	}
@@ -255,6 +266,260 @@ namespace GasUp_Service
 					this._Product_Availability = value;
 					this.SendPropertyChanged("Product_Availability");
 					this.OnProduct_AvailabilityChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Customer")]
+	public partial class Customer : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Customer_Id;
+		
+		private string _Customer_Name;
+		
+		private string _Customer_Surname;
+		
+		private string _Customer_email;
+		
+		private string _Customer_PhoneNumber;
+		
+		private string _Customer_Password;
+		
+		private string _Customer_StreetAddress;
+		
+		private string _Customer_Suburb;
+		
+		private string _Customer_PostalCode;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnCustomer_IdChanging(int value);
+    partial void OnCustomer_IdChanged();
+    partial void OnCustomer_NameChanging(string value);
+    partial void OnCustomer_NameChanged();
+    partial void OnCustomer_SurnameChanging(string value);
+    partial void OnCustomer_SurnameChanged();
+    partial void OnCustomer_emailChanging(string value);
+    partial void OnCustomer_emailChanged();
+    partial void OnCustomer_PhoneNumberChanging(string value);
+    partial void OnCustomer_PhoneNumberChanged();
+    partial void OnCustomer_PasswordChanging(string value);
+    partial void OnCustomer_PasswordChanged();
+    partial void OnCustomer_StreetAddressChanging(string value);
+    partial void OnCustomer_StreetAddressChanged();
+    partial void OnCustomer_SuburbChanging(string value);
+    partial void OnCustomer_SuburbChanged();
+    partial void OnCustomer_PostalCodeChanging(string value);
+    partial void OnCustomer_PostalCodeChanged();
+    #endregion
+		
+		public Customer()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Customer_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Customer_Id
+		{
+			get
+			{
+				return this._Customer_Id;
+			}
+			set
+			{
+				if ((this._Customer_Id != value))
+				{
+					this.OnCustomer_IdChanging(value);
+					this.SendPropertyChanging();
+					this._Customer_Id = value;
+					this.SendPropertyChanged("Customer_Id");
+					this.OnCustomer_IdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Customer_Name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Customer_Name
+		{
+			get
+			{
+				return this._Customer_Name;
+			}
+			set
+			{
+				if ((this._Customer_Name != value))
+				{
+					this.OnCustomer_NameChanging(value);
+					this.SendPropertyChanging();
+					this._Customer_Name = value;
+					this.SendPropertyChanged("Customer_Name");
+					this.OnCustomer_NameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Customer_Surname", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Customer_Surname
+		{
+			get
+			{
+				return this._Customer_Surname;
+			}
+			set
+			{
+				if ((this._Customer_Surname != value))
+				{
+					this.OnCustomer_SurnameChanging(value);
+					this.SendPropertyChanging();
+					this._Customer_Surname = value;
+					this.SendPropertyChanged("Customer_Surname");
+					this.OnCustomer_SurnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Customer_email", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Customer_email
+		{
+			get
+			{
+				return this._Customer_email;
+			}
+			set
+			{
+				if ((this._Customer_email != value))
+				{
+					this.OnCustomer_emailChanging(value);
+					this.SendPropertyChanging();
+					this._Customer_email = value;
+					this.SendPropertyChanged("Customer_email");
+					this.OnCustomer_emailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Customer_PhoneNumber", DbType="Char(10) NOT NULL", CanBeNull=false)]
+		public string Customer_PhoneNumber
+		{
+			get
+			{
+				return this._Customer_PhoneNumber;
+			}
+			set
+			{
+				if ((this._Customer_PhoneNumber != value))
+				{
+					this.OnCustomer_PhoneNumberChanging(value);
+					this.SendPropertyChanging();
+					this._Customer_PhoneNumber = value;
+					this.SendPropertyChanged("Customer_PhoneNumber");
+					this.OnCustomer_PhoneNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Customer_Password", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Customer_Password
+		{
+			get
+			{
+				return this._Customer_Password;
+			}
+			set
+			{
+				if ((this._Customer_Password != value))
+				{
+					this.OnCustomer_PasswordChanging(value);
+					this.SendPropertyChanging();
+					this._Customer_Password = value;
+					this.SendPropertyChanged("Customer_Password");
+					this.OnCustomer_PasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Customer_StreetAddress", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Customer_StreetAddress
+		{
+			get
+			{
+				return this._Customer_StreetAddress;
+			}
+			set
+			{
+				if ((this._Customer_StreetAddress != value))
+				{
+					this.OnCustomer_StreetAddressChanging(value);
+					this.SendPropertyChanging();
+					this._Customer_StreetAddress = value;
+					this.SendPropertyChanged("Customer_StreetAddress");
+					this.OnCustomer_StreetAddressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Customer_Suburb", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Customer_Suburb
+		{
+			get
+			{
+				return this._Customer_Suburb;
+			}
+			set
+			{
+				if ((this._Customer_Suburb != value))
+				{
+					this.OnCustomer_SuburbChanging(value);
+					this.SendPropertyChanging();
+					this._Customer_Suburb = value;
+					this.SendPropertyChanged("Customer_Suburb");
+					this.OnCustomer_SuburbChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Customer_PostalCode", DbType="Char(4) NOT NULL", CanBeNull=false)]
+		public string Customer_PostalCode
+		{
+			get
+			{
+				return this._Customer_PostalCode;
+			}
+			set
+			{
+				if ((this._Customer_PostalCode != value))
+				{
+					this.OnCustomer_PostalCodeChanging(value);
+					this.SendPropertyChanging();
+					this._Customer_PostalCode = value;
+					this.SendPropertyChanged("Customer_PostalCode");
+					this.OnCustomer_PostalCodeChanged();
 				}
 			}
 		}
